@@ -1,12 +1,8 @@
-
 import { useLocation, useNavigate } from "react-router-dom";
-
 import React from "react";
 export default function Header() {
-  
   const location = useLocation();
   const navigate = useNavigate();
-
   function pathMatchRoute(route) {
     if (route === location.pathname) {
       return true;
@@ -26,29 +22,28 @@ export default function Header() {
         <div>
           <ul className="flex space-x-10">
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/") && "text-black border-b-red-500"
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent 
+              ${pathMatchRoute("/") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/")}
             >
               Home
             </li>
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/offers") && "text-black border-b-red-500"
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent 
+              ${pathMatchRoute("/offers") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/offers")}
             >
-             Offers
+              Offers
             </li>
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                (pathMatchRoute("/sign-in") || pathMatchRoute("/sign-in")) &&
-                "text-black border-b-red-500"
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent 
+              ${pathMatchRoute("/sign-in") &&"text-black border-b-red-500"
               }`}
               onClick={() => navigate("/sign-in")}
             >
-            Sign in
+              Sign In
             </li>
           </ul>
         </div>
