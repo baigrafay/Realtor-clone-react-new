@@ -2,15 +2,17 @@ import React from 'react'
 import Moment from 'react-moment';
 import {Link} from "react-router-dom"
 import {FaLocationArrow} from "react-icons/fa"
+import {FaTrash} from "react-icons/fa"
+import{TbEdit} from "react-icons/tb"
 
-export default function ListingItem({listing,id}) {
+export default function ListingItem({listing,id,onEdit,onDelete}) {
   return <li className='m-[10px] relative bg-white flex flex-col justify-between items-center shadow-md hover:shadow-xl rounded-md overflow-hidden transition-shadow duration-150 '>
             <Link className='contents' to={`/category/${listing.type}/${id}`}>
-                <img className='h-[170px] w-full object-cover hover:scale-105 transition-scale duration-200 ease-in 'loading='lazy' src={listing.imgUrls[0]}  />
+                <img className='h-[170px] w-full object-cover hover:scale-105 transition-scale duration-200 ease-in 'loading='lazy' src={listing.imgUrls[0]} alt='' />
                 <Moment className='absolute top-2 left-2 bg-[#3377cc] text-white uppercase text-xs font-semibold rounded-md px-2 py-1 shadow-lg ' fromNow>
                     {listing.timestamp?.toDate()}
                 </Moment>
-                <div className='w-full p-[10p] '>
+                <div className='w-full p-[10p] ml-3 '>
                     <div className='flex items-center space-x-1 '>
                         <FaLocationArrow className='h-4 w-4 text-green-700'/>
                         <p className='font-semibold text-sm mb-[2px] text-gray-600 truncate '>{listing.address}</p>
@@ -25,7 +27,7 @@ export default function ListingItem({listing,id}) {
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     {listing.type === "rent" && " /month"}
                     </p>
-                    <div className='flex items-center mt-[10px] space-x-3 '>
+                    <div className='flex items-center mt-[10px] space-x-3 mb-3 '>
                         <div className='flex items-center space-x-1 '>
                             <p className='font-bold text-xs '>
                                 {listing.bedrooms >1 ? `${listing.bedrooms} Beds` : "1 Bed"}
@@ -40,6 +42,14 @@ export default function ListingItem({listing,id}) {
                 </div>
 
             </Link>
+            {onDelete && (
+                <FaTrash className='absolute bottom-2 right-2 h-[14px] cursor-pointer text-red-600' onClick={()=>onDelete(listing.id)}/>
+                
+            )}
+               {onEdit && (
+                <TbEdit className='absolute bottom-2 right-7 h-4 cursor-pointer ' onClick={()=>onEdit(listing.id)}/>
+                
+            )}
         </li>;
   
 }
