@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 export default function CreateListing() {
   const navigate = useNavigate();
   const auth = getAuth();
-  const [geolocationEnabled, setGeolocationEnabled] = useState(true);
+  const [geolocationEnabled, setGeolocationEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     type: "rent",
@@ -313,7 +313,7 @@ export default function CreateListing() {
             <div className="">
               <p className="text-lg font-semibold">Latitude</p>
               <input
-                type="number"
+                type="float"
                 id="latitude"
                 value={latitude}
                 onChange={onChange}
@@ -326,7 +326,7 @@ export default function CreateListing() {
             <div className="">
               <p className="text-lg font-semibold">Longitude</p>
               <input
-                type="number"
+                type="float"
                 id="longitude"
                 value={longitude}
                 onChange={onChange}

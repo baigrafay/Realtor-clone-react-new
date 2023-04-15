@@ -22,7 +22,7 @@ import { useEffect } from "react";
 export default function CreateListing() {
   const navigate = useNavigate();
   const auth = getAuth();
-  const [geolocationEnabled, setGeolocationEnabled] = useState(true);
+  const [geolocationEnabled, setGeolocationEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const [listing, setListing] = useState(null);
   const [formData, setFormData] = useState({
@@ -349,7 +349,7 @@ export default function CreateListing() {
             <div className="">
               <p className="text-lg font-semibold">Latitude</p>
               <input
-                type="number"
+                type="float"
                 id="latitude"
                 value={latitude}
                 onChange={onChange}
@@ -362,7 +362,7 @@ export default function CreateListing() {
             <div className="">
               <p className="text-lg font-semibold">Longitude</p>
               <input
-                type="number"
+                type="float"
                 id="longitude"
                 value={longitude}
                 onChange={onChange}
