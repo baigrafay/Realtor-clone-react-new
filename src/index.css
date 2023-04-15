@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 body{
-    background-color: rgb(240, 253, 244);
-}
+    background-color:rgb(225, 248, 237)}
 
 .swiper-button-next:after,
 .swiper-button-prev:after{
